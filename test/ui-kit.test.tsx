@@ -34,6 +34,6 @@ test('Toast dismiss button only with handler', () => {
 test('ApiError is catchable by instanceof', () => {
   try { throw new ApiError(404, 'not_found'); } catch (e) {
     assert.ok(e instanceof ApiError);
-    assert.equal((e as ApiError).status, 404);
+    assert.equal((e as ApiError).statusCode, 404);
   }
 });
