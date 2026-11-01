@@ -13,9 +13,9 @@ export function PriceTag({ amount, currency, compareAt, className }: PriceTagPro
   return (
     <div className={['sl-price-tag', className].filter(Boolean).join(' ')}>
       {compareAt !== undefined && compareAt > amount && (
-        <s className="sl-price-tag__was"><Money amount={compareAt} currency={currency} /></s>
+        <s className="sl-price-tag__was"><Money value={compareAt} currency={currency} /></s>
       )}
-      <Money amount={amount} currency={currency} />
+      <Money value={amount} currency={currency} />
     </div>
   );
 }
