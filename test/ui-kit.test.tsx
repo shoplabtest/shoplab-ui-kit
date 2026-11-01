@@ -37,3 +37,8 @@ test('ApiError is catchable by instanceof', () => {
     assert.equal((e as ApiError).status, 404);
   }
 });
+
+test('PriceTag accepts wasAmount, and the deprecated compareAt still works', () => {
+  assert.match(renderToStaticMarkup(<PriceTag amount={800} currency="USD" wasAmount={1000} />), /<s class="sl-price-tag__was">/);
+  assert.match(renderToStaticMarkup(<PriceTag amount={800} currency="USD" compareAt={1000} />), /<s class="sl-price-tag__was">/);
+});
