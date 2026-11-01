@@ -17,8 +17,8 @@ test('CURRENCIES lists supported codes', () => {
 });
 
 test('PriceTag shows compareAt only when higher', () => {
-  assert.match(renderToStaticMarkup(<PriceTag amount={800} currency="USD" compareAt={1000} />), /<s class="sl-price-tag__was">/);
-  assert.doesNotMatch(renderToStaticMarkup(<PriceTag amount={800} currency="USD" compareAt={700} />), /<s /);
+  assert.match(renderToStaticMarkup(<PriceTag price={800} currency="USD" compareAt={1000} />), /<s class="sl-price-tag__was">/);
+  assert.doesNotMatch(renderToStaticMarkup(<PriceTag price={800} currency="USD" compareAt={700} />), /<s /);
 });
 
 test('FormField renders error with alert role', () => {
