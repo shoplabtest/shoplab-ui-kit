@@ -6,3 +6,4 @@ export { Money, type MoneyProps } from './Money.tsx';
 export { PriceTag, type PriceTagProps } from './PriceTag.tsx';
 export { FormField, type FormFieldProps } from './FormField.tsx';
 export { Toast, type ToastProps } from './Toast.tsx';
+export { Badge, type BadgeProps } from './Badge.tsx';

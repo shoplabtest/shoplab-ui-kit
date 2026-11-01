@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { ApiError, CURRENCIES, FormField, PriceTag, Toast, formatMoney } from '../src/index.ts';
+import { ApiError, Badge, CURRENCIES, FormField, PriceTag, Toast, formatMoney } from '../src/index.ts';
 
 test('formatMoney converts minor units', () => {
   assert.equal(formatMoney(1999, 'USD'), '$19.99');
@@ -36,4 +36,9 @@ test('ApiError is catchable by instanceof', () => {
     assert.ok(e instanceof ApiError);
     assert.equal((e as ApiError).status, 404);
   }
+});
+
+test('Badge renders its text with the tone class', () => {
+  assert.match(renderToStaticMarkup(<Badge tone="success">New</Badge>), /<span class="sl-badge sl-badge--success">New<\/span>/);
+  assert.match(renderToStaticMarkup(<Badge>Plain</Badge>), /sl-badge--neutral/);
 });
