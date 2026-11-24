@@ -8,6 +8,12 @@ test('formatMoney converts minor units', () => {
   assert.equal(formatMoney(500, 'EUR', 'de-DE'), '5,00 €');
 });
 
+test('formatMoney uses the given locale, and the runtime locale when none is given', () => {
+  assert.equal(formatMoney(125050, 'USD', 'en-US'), '$1,250.50');
+  assert.equal(formatMoney(125050, 'EUR', 'de-DE'), new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(1250.5));
+  assert.equal(formatMoney(125050, 'USD'), new Intl.NumberFormat(undefined, { style: 'currency', currency: 'USD' }).format(1250.5));
+});
+
 test('formatMoney rejects unknown currencies', () => {
   assert.throws(() => formatMoney(1, 'XXX' as never), RangeError);
 });
